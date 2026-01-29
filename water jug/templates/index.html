@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Water Jug Simulation</title>
+    <style>
+        body { font-family: Arial; text-align: center; }
+        .container { display: flex; justify-content: center; gap: 80px; margin-top: 40px; }
+        .jug { width: 120px; height: 300px; border: 3px solid black; position: relative; border-radius: 0 0 20px 20px; }
+        .water { position: absolute; bottom: 0; width: 100%; background: #4da6ff; transition: height 1s; }
+    </style>
+</head>
+<body>
+
+<h1>Water Jug Problem Simulation</h1>
+
+<div class="container">
+    <div>
+        <div class="jug"><div id="a" class="water"></div></div>
+        <p>Jug A (4L)</p>
+    </div>
+    <div>
+        <div class="jug"><div id="b" class="water"></div></div>
+        <p>Jug B (3L)</p>
+    </div>
+</div>
+
+<h2 id="action">Start</h2>
+
+<script>
+const steps = [
+    {a:0,b:0,action:"Start"},
+    {a:0,b:3,action:"Fill Jug B"},
+    {a:3,b:0,action:"Pour B → A"},
+    {a:3,b:3,action:"Fill Jug B"},
+    {a:4,b:2,action:"Pour B → A"},
+    {a:2,b:0,action:"Empty Jug B (Goal Reached)"}
+];
+
+let i = 0;
+setInterval(() => {
+    if (i >= steps.length) return;
+    document.getElementById("a").style.height = (steps[i].a / 4) * 100 + "%";
+    document.getElementById("b").style.height = (steps[i].b / 3) * 100 + "%";
+    document.getElementById("action").innerText = steps[i].action;
+    i++;
+}, 1500);
+</script>
+
+</body>
+</html>

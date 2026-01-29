@@ -1,0 +1,27 @@
+body{
+    text-align:center;
+    font-family:Arial;
+}
+
+#board{
+    width:180px;
+    display:grid;
+    grid-template-columns:repeat(3,60px);
+    gap:5px;
+    margin:20px auto;
+}
+
+.tile{
+    width:60px;
+    height:60px;
+    background:#4CAF50;
+    color:white;
+    font-size:22px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.blank{
+    background:#ddd;
+}
