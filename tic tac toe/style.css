@@ -4,7 +4,7 @@
 }
 
 html { 
-    background-color: #f9c1fa; 
+    background-color: #ffffff; 
 }
 
 header{
@@ -15,7 +15,6 @@ header{
 
 h1#head { 
     font-size: 50px;
-    font-family: Cursive;
     color: rgb(123, 0, 255);
 }
 
@@ -29,7 +28,7 @@ h1#result {
 
 canvas {
     border: 3px solid rgb(252, 179, 244); 
-    background-color: rgb(224, 255, 225);
+    background-color: rgb(255, 255, 255);
     text-align: center;
 	display: block;
 	float: left;
@@ -48,7 +47,7 @@ canvas {
     width: 318px;
     height: 318px;
     display: inline-block;
-	border: 3px solid dodgerblue; 
+	border: 3px solid rgb(255, 171, 242); 
 }
 
 #rules {

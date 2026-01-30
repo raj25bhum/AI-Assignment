@@ -50,7 +50,6 @@ def bfs():
                 action[(na, nb)] = act
                 queue.append((na, nb))
 
-    # Reconstruct path
     path = []
     actions = []
 
