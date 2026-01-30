@@ -29,22 +29,35 @@
 <script>
 const steps = [
     {a:0,b:0,action:"Start"},
+
     {a:0,b:3,action:"Fill Jug B"},
     {a:3,b:0,action:"Pour B → A"},
+
     {a:3,b:3,action:"Fill Jug B"},
     {a:4,b:2,action:"Pour B → A"},
-    {a:2,b:0,action:"Empty Jug B (Goal Reached)"}
+
+    {a:0,b:2,action:"Empty Jug A"},
+    {a:2,b:0,action:"Pour B → A (Jug A has 2L of water: Goal Reached!)"}
 ];
 
 let i = 0;
+
 setInterval(() => {
     if (i >= steps.length) return;
-    document.getElementById("a").style.height = (steps[i].a / 4) * 100 + "%";
-    document.getElementById("b").style.height = (steps[i].b / 3) * 100 + "%";
-    document.getElementById("action").innerText = steps[i].action;
+
+    document.getElementById("a").style.height =
+        (steps[i].a / 4) * 100 + "%";
+
+    document.getElementById("b").style.height =
+        (steps[i].b / 3) * 100 + "%";
+
+    document.getElementById("action").innerText =
+        steps[i].action;
+
     i++;
 }, 1500);
 </script>
+
 
 </body>
 </html>

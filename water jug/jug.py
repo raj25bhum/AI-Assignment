@@ -7,8 +7,10 @@ CAP_A = 4
 CAP_B = 3
 GOAL = 2
 
+
 def get_next_states(a, b):
     states = []
+
     states.append((CAP_A, b, "Fill Jug A"))
     states.append((a, CAP_B, "Fill Jug B"))
     states.append((0, b, "Empty Jug A"))
@@ -22,16 +24,23 @@ def get_next_states(a, b):
 
     return states
 
+
 def bfs():
     start = (0, 0)
+
     queue = deque([start])
     visited = set([start])
+
     parent = {start: None}
     action = {start: None}
 
+    goal_state = None
+
     while queue:
         a, b = queue.popleft()
+
         if a == GOAL:
+            goal_state = (a, b)
             break
 
         for na, nb, act in get_next_states(a, b):
@@ -41,14 +50,15 @@ def bfs():
                 action[(na, nb)] = act
                 queue.append((na, nb))
 
+    # Reconstruct path
     path = []
     actions = []
-    goal = (GOAL, next(b for (a, b) in visited if a == GOAL))
 
-    while goal:
-        path.append(goal)
-        actions.append(action[goal])
-        goal = parent[goal]
+    curr = goal_state
+    while curr:
+        path.append(curr)
+        actions.append(action[curr])
+        curr = parent[curr]
 
     path.reverse()
     actions.reverse()
@@ -64,13 +74,16 @@ def bfs():
 
     return result
 
+
 @app.route("/")
 def index():
     return render_template("index.html")
 
+
 @app.route("/data")
 def data():
     return jsonify(bfs())
+
 
 if __name__ == "__main__":
     app.run(debug=True)
